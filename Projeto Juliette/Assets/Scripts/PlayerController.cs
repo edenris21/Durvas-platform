@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     // Número de moedas coletadas
     public int coins = 0;
 
-    public TMP_Text coinText;
+    public int rubis = 0;
     
     // Guarda uma referência para os controles que criamos no InputAction
     private Controls _controls;
@@ -195,11 +195,24 @@ public class PlayerController : MonoBehaviour
             //Aumenta o número de coins do jogador em uma unidade
             coins++;
             
-            // Atualizar o numero de coins na interface
-            coinText.text = coins.ToString();
-            
+            // Manda a notificação na mudança do valor de coins
+            PlayerObserverManager.CoinsChanged(coins);
+
             //Destrói o objeto do coin
             Destroy(other.gameObject);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("rubi"))
+        {
+            rubis++;
+            
+            PlayerObserverManager.RubisChanged(rubis);
+            
+            Destroy(other.gameObject);
+        }
+
     }
 }

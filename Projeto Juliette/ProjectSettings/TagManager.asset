@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - coin
+  - rubi
   layers:
   - Default
   - TransparentFX
