@@ -3675,6 +3675,24 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &997390232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9080437188423919574, guid: 4d0a7093d87c76f4fb1a9fc831e5030f, type: 3}
+  m_PrefabInstance: {fileID: 4571826948585747061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &997390233
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997390232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 0.9999997, z: 0.99999976}
+  m_Center: {x: -0.50000006, y: 0.49999985, z: 0}
 --- !u!1001 &1008604424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6011,7 +6029,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-37072
+  m_Name: pb_Mesh-5720
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7794,7 +7812,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: rubi
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2934977836891699126, guid: 4d0a7093d87c76f4fb1a9fc831e5030f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d0a7093d87c76f4fb1a9fc831e5030f, type: 3}
 --- !u!1001 &4913959750323014268
 PrefabInstance:

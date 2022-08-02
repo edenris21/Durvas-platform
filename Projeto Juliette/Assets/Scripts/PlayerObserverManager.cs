@@ -15,13 +15,13 @@ public static class PlayerObserverManager
    {
       // Existe alguém inscrito em OnCoinsChanged?
       // Caso tenha, mande o value para todos
-      OnCoinsChanged.Invoke(value);
+      OnCoinsChanged?.Invoke(value);
    }
 
    public static Action<int> OnRubisChanged;
 
    public static void RubisChanged(int value)
    {
-      OnRubisChanged.Invoke(value);
+      OnRubisChanged?.Invoke(value);
    }
 }
