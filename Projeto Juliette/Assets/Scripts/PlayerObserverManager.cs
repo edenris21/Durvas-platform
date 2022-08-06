@@ -17,11 +17,16 @@ public static class PlayerObserverManager
       // Caso tenha, mande o value para todos
       OnCoinsChanged?.Invoke(value);
    }
-
+   // Canal da variável rubi do PlayerController
+   // 1 - Parte da inscrição
    public static Action<int> OnRubisChanged;
 
+   // Parte do sininho (notificação)
    public static void RubisChanged(int value)
    {
+      
+      // Existe alguém inscrito em OnCoinsChanged?
+      // Caso tenha, mande o value para todos
       OnRubisChanged?.Invoke(value);
    }
 }

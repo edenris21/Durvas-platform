@@ -205,16 +205,19 @@ public class PlayerController : MonoBehaviour
             // Manda a notificação na mudança do valor de coins
             PlayerObserverManager.CoinsChanged(coins);
 
-            //Destrói o objeto do coin
+            // Destrói o objeto do coin
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("rubi"))
         {
+            // Aumenta o número de rubis do jogador em uma unidade
             rubis++;
             
+            // Manda a notificação na mudança do valor de rubis
             PlayerObserverManager.RubisChanged(rubis);
-
+            
+            // Destrói o objeto do rubi
             Destroy(other.gameObject);
         }
     }
