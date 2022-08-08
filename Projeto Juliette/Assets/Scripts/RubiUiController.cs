@@ -10,14 +10,17 @@ public class RubiUiController : MonoBehaviour
 
     private void OnEnable()
     {
+    	// Se inscreve no canal de rubis
         PlayerObserverManager.OnRubisChanged += UpdateRubiText;
     }
 
     private void OnDisable()
     {
+		// Retira a inscrição no canal de rubis
         PlayerObserverManager.OnRubisChanged += UpdateRubiText;
     }
 
+	// Função usada para tratar a notificação do canal de rubis
     private void UpdateRubiText(int newRubisValue)
     {
         rubiText.text = newRubisValue.ToString();
