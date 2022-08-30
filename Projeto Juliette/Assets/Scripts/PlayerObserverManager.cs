@@ -25,7 +25,7 @@ public static class PlayerObserverManager
    public static void RubisChanged(int value)
    {
       
-      // Existe alguém inscrito em OnCoinsChanged?
+      // Existe alguém inscrito em OnRubisChanged?
       // Caso tenha, mande o value para todos
       OnRubisChanged?.Invoke(value);
    }
