@@ -1,7 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+public enum GameState
+{
+    Initialization, 
+    Running,
+    Victory,
+    GameOver
+}
 
 /// <summary>
 /// classe usada para gerenciar o jogo
@@ -9,6 +18,20 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; // Instancia do Singleton
+
+    public GameState GameState
+    {
+        get => _gameState;
+        set
+        {
+            if (value != _gameState) return;
+            _gameState = value;
+            OnGameStateChanged();
+        }
+    }
+    
+    public int coinsToWin;
+    public int timeToLose;
     
     [SerializeField] 
     private string guiName; // Nome da fase de interface
@@ -18,6 +41,18 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] 
     private GameObject playerAndCameraPrefab; // referencia pro prefab do jogador + camera
+
+    private GameState _gameState; // váriavel que guarda o estado atual do game manager
+    private float currentTime;
+
+    private void OnEnable()
+    {
+        PlayerObserverManager.OnCoinsChanged += PlayerCoinsUpdate;
+    }
+    private void OnDisable()
+    {
+        PlayerObserverManager.OnCoinsChanged += PlayerCoinsUpdate;
+    }
 
     private void Awake()
     {
@@ -54,6 +89,9 @@ public class GameManager : MonoBehaviour
         // Instancia o prefab do jogador na posição do player start com rotação zerada
         Instantiate(playerAndCameraPrefab, playerStartPosition, Quaternion.identity);
         
+        // 3 - Inicia o jogo
+        GameState = GameState.Running;
+
     }
     public void StartGame()
     {
@@ -88,11 +126,15 @@ public class GameManager : MonoBehaviour
 
             // Instancia o prefab do jogador na posição do player start com rotação zerada
             Instantiate(playerAndCameraPrefab, playerStartPosition, Quaternion.identity);
+            
+            // 3 - Começar a partida
+            GameState = GameState.Running;
         };
     }
 
     private void StartGameFromInitialization()
     {
+        GameState = GameState.Initialization;
         SceneManager.LoadScene("Splash");
     }
 
@@ -101,4 +143,23 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+    
+    private void PlayerCoinsUpdate (int obj)
+    {
+        if (obj >= coinsToWin) GameState = GameState.Victory;
+    }
+
+    private void OnGameStateChanged()
+    {
+        
+    }
 }
